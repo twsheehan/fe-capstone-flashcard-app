@@ -1,6 +1,7 @@
-import React from "react";
-import Layout from "./Layout";
+import React, { Fragment } from "react";
 import "./App.css";
+import Header from "./components/layout/Header";
+import RootRoutes from "./RootRoutes";
 
 /**
  * App is a wrapper for <Layout>, you should not need to change this file.
@@ -8,9 +9,12 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="app-routes">
-        <Layout />         
-      </div>
+    <Fragment>
+      <Header />
+      <main className="container">
+        <RootRoutes />
+      </main>
+    </Fragment>
   );
 }
 

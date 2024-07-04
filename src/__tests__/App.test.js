@@ -26,16 +26,14 @@ describe("App", () => {
         "Default mock response. If you see this, you probably do not need this API call.",
     });
     createDeck.mockResolvedValue({
-      name:
-        "Default mock response. If you see this, you probably do not need this API call.",
+      name: "Default mock response. If you see this, you probably do not need this API call.",
     });
     deleteCard.mockResolvedValue({
       front:
         "Default mock response. If you see this, you probably do not need this API call.",
     });
     deleteDeck.mockResolvedValue({
-      name:
-        "Default mock response. If you see this, you probably do not need this API call.",
+      name: "Default mock response. If you see this, you probably do not need this API call.",
     });
     listDecks.mockResolvedValue([
       {
@@ -48,25 +46,22 @@ describe("App", () => {
         "Default mock response. If you see this, you probably do not need this API call.",
     });
     readDeck.mockResolvedValue({
-      name:
-        "Default mock response. If you see this, you probably do not need this API call.",
+      name: "Default mock response. If you see this, you probably do not need this API call.",
     });
     updateCard.mockResolvedValue({
       front:
         "Default mock response. If you see this, you probably do not need this API call.",
     });
     updateDeck.mockResolvedValue({
-      name:
-        "Default mock response. If you see this, you probably do not need this API call.",
+      name: "Default mock response. If you see this, you probably do not need this API call.",
     });
   });
 
   test('landing on a bad page shows "Not Found" page', () => {
-
     render(
-        <MemoryRouter initialEntries={["/some/bad/route"]}>
-            <App />
-        </MemoryRouter>      
+      <MemoryRouter initialEntries={["/some/bad/route"]}>
+        <App />
+      </MemoryRouter>
     );
     expect(screen.getByText("Not Found")).toBeTruthy();
   });
@@ -91,11 +86,10 @@ describe("App", () => {
 
     listDecks.mockImplementation(() => mockDecksPromise);
 
-
     render(
-        <MemoryRouter initialEntries={["/"]}>
-            <App />
-        </MemoryRouter>
+      <MemoryRouter initialEntries={["/"]}>
+        <App />
+      </MemoryRouter>
     );
 
     await act(() => mockDecksPromise);
