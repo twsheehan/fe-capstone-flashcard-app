@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteDeck } from "../../utils/api";
 
@@ -16,7 +17,6 @@ function DeckDeleteButton({ deck }) {
   return (
     <button type="button" className="btn btn-danger" onClick={handleDelete}>
       Delete
-      <i class="bi bi-trash"></i>
     </button>
   );
 }
