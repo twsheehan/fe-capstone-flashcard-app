@@ -29,7 +29,7 @@ function DeckScreen() {
 
   const handleDelete = (cardId) => {
     const result = window.confirm(
-      `Delete this card? \n\nYou will not be able to recover it.`
+      `Delete this card?\n\nYou will not be able to recover it.`
     );
     if (result) {
       deleteCard(cardId).then(() =>

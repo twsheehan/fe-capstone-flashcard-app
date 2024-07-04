@@ -7,7 +7,7 @@ function DeckDeleteButton({ deck }) {
 
   const handleDelete = () => {
     const result = window.confirm(
-      `Delete this deck: ${deck.name}? \n\nYou will not be able to recover it.`
+      `Delete this deck: ${deck.name}?\n\nYou will not be able to recover it.`
     );
     if (result) {
       deleteDeck(deck.id).then(navigate("/"));
