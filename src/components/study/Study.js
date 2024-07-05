@@ -27,11 +27,7 @@ function Study() {
   }
 
   if (!deck) {
-    return (
-      <div>
-        <p>Loading...</p>
-      </div>
-    );
+    return <p>Loading...</p>;
   }
 
   if (deck.cards && deck.cards.length <= 2) {

@@ -6,6 +6,7 @@ import DeckCreateNew from "./components/deck/DeckCreateNew";
 import CardCreateNew from "./components/card/CardCreateNew";
 import CardEdit from "./components/card/CardEdit";
 import DeckEdit from "./components/deck/DeckEdit";
+import Study from "./components/study/Study";
 import NotFound from "./components/layout/NotFound";
 
 function RootRoutes() {
@@ -15,9 +16,10 @@ function RootRoutes() {
       <Route path="/decks" element={<DeckList />} />
       <Route path="/decks/new" element={<DeckCreateNew />} />
       <Route path="/decks/:deckId" element={<DeckScreen />} />
+      <Route path="/decks/:deckId/study" element={<Study />} />
+      <Route path="/decks/:deckId/edit" element={<DeckEdit />} />
       <Route path="/decks/:deckId/cards/new" element={<CardCreateNew />} />
       <Route path="/decks/:deckId/cards/:cardId/edit" element={<CardEdit />} />
-      <Route path="/decks/:deckId/edit" element={<DeckEdit />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
