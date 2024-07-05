@@ -4,7 +4,7 @@ import { readDeck, updateDeck } from "../../utils/api";
 import Breadcrumb from "../layout/Breadcrumb";
 
 function DeckEdit() {
-  const [deck, setDeck] = useState({});
+  const [deck, setDeck] = useState({ name: "", description: "" });
   const { deckId } = useParams();
   const [error, setError] = useState(undefined);
   const navigate = useNavigate();
@@ -38,10 +38,9 @@ function DeckEdit() {
   const submitHandler = (event) => {
     event.preventDefault();
     const abortController = new AbortController();
-    updateDeck(deckId, abortController.signal)
-      .then((deck) => {
-        updateDeck(deck, abortController.signal);
-        navigate("/");
+    updateDeck(deck, abortController.signal)
+      .then(() => {
+        navigate(`/decks/${deckId}`);
       })
       .catch(setError);
     return () => abortController.abort();
@@ -65,25 +64,22 @@ function DeckEdit() {
             type="text"
             name="name"
             onChange={changeHandler}
-            value={deck.name}
+            value={deck.name || ""}
           />
         </div>
         <div className="formGroup">
           <label htmlFor="description">Description</label>
           <textarea
             id="description"
-            type="textarea"
             name="description"
             onChange={changeHandler}
-            value={deck.description}
+            value={deck.description || ""}
           />
         </div>
         <NavLink to="/">
           <button type="button">Cancel</button>
         </NavLink>
-        <button type="submit" onSubmit={submitHandler}>
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

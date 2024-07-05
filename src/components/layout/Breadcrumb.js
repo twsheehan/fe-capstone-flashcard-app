@@ -5,15 +5,15 @@ function Breadcrumb({ props }) {
   return (
     <nav>
       <ol className="breadcrumb">
-        {props.map((prop) =>
-          prop.active === true ? (
-            <li className="breadcrumbActive">{prop.title}</li>
+        {props.map((prop, index) => (
+          prop.active ? (
+            <li key={index} className="breadcrumbActive">{prop.title}</li>
           ) : (
-            <li className="breadcrumb">
-              <NavLink to={prop.link}></NavLink>
+            <li key={index} className="breadcrumb">
+              <NavLink to={prop.link}>{prop.title}</NavLink>
             </li>
           )
-        )}
+        ))}
       </ol>
     </nav>
   );
