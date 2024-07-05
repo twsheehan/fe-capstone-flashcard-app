@@ -26,17 +26,17 @@ function CardCreateNew() {
     back: "",
   };
 
-  const [cardData, setCardData] = useState({ ...initialCardState });
+  const [card, setCard] = useState({ ...initialCardState });
 
   const changeHandler = ({ target }) => {
-    setCardData({ ...cardData, [target.name]: target.value });
+    setCard({ ...card, [target.name]: target.value });
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
 
     const abortController = new AbortController();
-    createCard(deckId, cardData, abortController.signal)
+    createCard(deckId, card, abortController.signal)
       .then(() => {
         navigate(`/decks/${deckId}`);
       })
@@ -44,7 +44,7 @@ function CardCreateNew() {
         console.log(error);
       })
       .finally(() => {
-        setCardData({ ...initialCardState });
+        setCard({ ...initialCardState });
       });
   };
 
@@ -61,7 +61,7 @@ function CardCreateNew() {
       <CardForm
         onSubmit={onSubmit}
         onChange={changeHandler}
-        cardData={cardData}
+        cardData={card}
         deckId={deckId}
         add={true}
       />

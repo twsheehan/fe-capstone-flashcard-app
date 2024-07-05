@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function CardForm({ onChange, onSubmit, cardData, deckId, add }) {
+function CardForm({ onChange, onSubmit, card, deckId, add }) {
   const navigate = useNavigate();
 
   return (
     <form name="createCard" onSubmit={onSubmit}>
       <div>
-        <label>Front</label>
+        <label htmlFor="front">Front</label>
         <textarea
           type="textarea"
           name="front"
@@ -15,11 +15,11 @@ function CardForm({ onChange, onSubmit, cardData, deckId, add }) {
           placeholder="Front side of card"
           required={true}
           onChange={onChange}
-          value={cardData.front}
+          value={card.front}
         />
       </div>
       <div>
-        <label>Back</label>
+        <label htmlFor="back">Back</label>
         <textarea
           type="textarea"
           name="back"
@@ -27,10 +27,11 @@ function CardForm({ onChange, onSubmit, cardData, deckId, add }) {
           placeholder="Back side of card"
           required={true}
           onChange={onChange}
-          value={cardData.back}
+          value={card.back}
         />
       </div>
       <button
+        type="button"
         onClick={() => {
           navigate(`/decks/${deckId}`);
         }}
