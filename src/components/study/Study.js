@@ -7,7 +7,7 @@ import CardsLimit from "./CardsLimit";
 function Study() {
   const navigate = useNavigate();
   const { deckId } = useParams();
-  const [deck, setDeck] = useState();
+  const [deck, setDeck] = useState(null);
   const [error, setError] = useState(undefined);
   const [flipped, setFlipped] = useState(false);
   const [index, setIndex] = useState(0);
@@ -71,11 +71,11 @@ function Study() {
       <div className="card">
         <div className="cardBody">
           <h5>
-            Card {index + 1} of {deck.cards.length}
+            Card {index + 1} of {deck.cards?.length || 0}
           </h5>
         </div>
         <p className="cardQuestion">
-          {flipped ? deck.cards[index].back : deck.cards[index].front}
+          {flipped ? deck.cards?.[index]?.back : deck.cards?.[index]?.front}
         </p>
         <button onClick={flipHandler}>Flip</button>
         {flipped && <button onClick={clickHandler}>Next</button>}

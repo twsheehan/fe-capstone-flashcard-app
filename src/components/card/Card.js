@@ -18,7 +18,7 @@ function Card({ card, deleteHandler }) {
         <NavLink to={`${pathname}/cards/${card.id}/edit`}>
           <button>Edit</button>
         </NavLink>
-        <button onClick={deleteHandler}>Delete</button>
+        <button onClick={() => deleteHandler(card.id)}>Delete</button>
       </div>
     </div>
   );

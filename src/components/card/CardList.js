@@ -1,14 +1,14 @@
 import React from "react";
 import Card from "./Card";
 
-function CardList({ cards, deleteHandler }) {
+function CardList({ cards, handleDelete }) {
   return (
     <div>
       {cards.map((card) => (
         <Card
           key={card.id}
           card={card}
-          deleteHandler={() => deleteHandler(card.id)}
+          deleteHandler={() => handleDelete(card.id)} // Use handleDelete here
         />
       ))}
     </div>
