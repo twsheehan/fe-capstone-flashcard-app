@@ -9,8 +9,8 @@ function Deck({ deck }) {
         <h2>{deck.name}</h2>
         <h3>{deck.cards.length} cards</h3>
         <p>{deck.description}</p>
-        <NavLink to={`/decks/${deck.id}/edit`}>
-          <button>Edit</button>
+        <NavLink to={`/decks/${deck.id}`}>
+          <button>View</button>
         </NavLink>
         <NavLink to={`/decks/${deck.id}/study`}>
           <button>Study</button>

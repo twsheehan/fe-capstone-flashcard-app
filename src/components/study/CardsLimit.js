@@ -11,11 +11,11 @@ function CardsLimit({ deckId, deck, cardsCount }) {
   return (
     <div>
       <Breadcrumb props={breadcrumbs} />
-      <h2>`${deck.name}: Study`</h2>
+      <h2>{deck.name}: Study</h2>
       <h3>Not enough cards.</h3>
       <p>
-        `You need at least 3 cards to study. There are ${cardsCount} cards in
-        this deck.`
+        You need at least 3 cards to study. There are {cardsCount} cards in this
+        deck.
       </p>
     </div>
   );

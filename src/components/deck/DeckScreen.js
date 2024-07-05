@@ -58,7 +58,7 @@ function DeckScreen() {
           <button>Study</button>
         </NavLink>
         <NavLink to={`${pathname}/cards/new`}>
-          <button>Add Cards</button>
+          <button>+ Add Cards</button>
         </NavLink>
         <DeckDeleteButton deck={deck} />
       </div>

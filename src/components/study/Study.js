@@ -23,7 +23,7 @@ function Study() {
   }, [deckId]);
 
   if (error) {
-    return <p>`ERROR: ${error.message}`</p>;
+    return <p>ERROR: {error.message}</p>;
   }
 
   if (!deck) {
@@ -50,7 +50,7 @@ function Study() {
       setFlipped(false);
     } else {
       const confirmRestart = window.confirm(
-        "Resart cards?\n\nClick 'cancel' to return to the home page."
+        "Restart cards?\n\nClick 'cancel' to return to the home page."
       );
       if (confirmRestart) {
         setIndex(0);
@@ -71,11 +71,11 @@ function Study() {
   return (
     <div>
       <Breadcrumb props={breadcrumbs} />
-      <h2>`Study: ${deck.name}`</h2>
+      <h2>Study: {deck.name}</h2>
       <div className="card">
         <div className="cardBody">
           <h5>
-            `Card ${index + 1} of {deck.cards.length}`
+            Card {index + 1} of {deck.cards.length}
           </h5>
         </div>
         <p className="cardQuestion">
