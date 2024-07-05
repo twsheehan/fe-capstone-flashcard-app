@@ -54,7 +54,7 @@ function CardEdit() {
   return (
     <div>
       <Breadcrumb props={breadcrumbs} />
-      <h3>Edit Card</h3>
+      <h2>Edit Card</h2>
       <CardForm
         onSubmit={submitHandler}
         onChange={changeHandler}

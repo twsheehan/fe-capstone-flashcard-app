@@ -57,7 +57,7 @@ function CardCreateNew() {
   return (
     <div>
       <Breadcrumb props={breadcrumbs} />
-      <h3>{deck.name}: Add Card</h3>
+      <h2>{deck.name}: Add Card</h2>
       <CardForm
         onSubmit={onSubmit}
         onChange={changeHandler}

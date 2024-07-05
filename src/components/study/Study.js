@@ -26,7 +26,6 @@ function Study() {
     return <p>`ERROR: ${error.message}`</p>;
   }
 
-  console.log(deck);
   if (!deck) {
     return (
       <div>
@@ -72,7 +71,7 @@ function Study() {
   return (
     <div>
       <Breadcrumb props={breadcrumbs} />
-      <h3>`Study: ${deck.name}`</h3>
+      <h2>`Study: ${deck.name}`</h2>
       <div className="card">
         <div className="cardBody">
           <h5>

@@ -48,7 +48,7 @@ function DeckScreen() {
   return (
     <div>
       <Breadcrumb props={breadcrumbs} />
-      <h4>{deck.name}</h4>
+      <h2>{deck.name}</h2>
       <p>{deck.description}</p>
       <div>
         <NavLink to={`${pathname}/edit`}>

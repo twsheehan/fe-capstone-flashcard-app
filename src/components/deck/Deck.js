@@ -6,15 +6,15 @@ function Deck({ deck }) {
   return (
     <div className="card">
       <div className="cardBody">
-        <h4>{deck.name}</h4>
-        <h5>{deck.cards.length}</h5>
+        <h2>{deck.name}</h2>
         <p>{deck.description}</p>
-        <NavLink to={`/decks/${deck.id}`}>
-          <button>View</button>
+        <NavLink to={`/decks/${deck.id}/edit`}>
+          <button>Edit</button>
         </NavLink>
         <NavLink to={`/decks/${deck.id}/study`}>
           <button>Study</button>
         </NavLink>
+        <NavLink to={`/decks/${deck.id}/new`}>+ Add Cards</NavLink>
         <DeckDeleteButton deck={deck} />
       </div>
     </div>
