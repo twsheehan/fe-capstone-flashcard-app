@@ -8,7 +8,7 @@ function CardEdit() {
   const navigate = useNavigate();
   const { deckId, cardId } = useParams();
   const [deck, setDeck] = useState({});
-  const [card, setCard] = useState({});
+  const [card, setCard] = useState(null);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -17,7 +17,7 @@ function CardEdit() {
         setDeck(deck);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error); // Improved error handling
       });
 
     readCard(cardId, abortController.signal)
@@ -25,8 +25,10 @@ function CardEdit() {
         setCard(card);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error); // Improved error handling
       });
+
+    return () => abortController.abort();
   }, [deckId, cardId]);
 
   const changeHandler = ({ target }) => {
@@ -41,7 +43,7 @@ function CardEdit() {
         navigate(`/decks/${deckId}`);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error); // Improved error handling
       });
   };
 
@@ -51,13 +53,17 @@ function CardEdit() {
     { link: "", title: `Edit Card ${cardId}`, active: true },
   ];
 
+  if (!card) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
       <Breadcrumb props={breadcrumbs} />
       <h2>Edit Card</h2>
       <CardForm
-        onSubmit={submitHandler}
         onChange={changeHandler}
+        onSubmit={submitHandler}
         card={card}
         deckId={deckId}
         add={false}

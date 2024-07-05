@@ -8,6 +8,7 @@ function CardCreateNew() {
   const navigate = useNavigate();
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
+  const [card, setCard] = useState({ front: "", back: "" });
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -16,17 +17,10 @@ function CardCreateNew() {
         setDeck(deck);
       })
       .catch((error) => {
-        return <p>`ERROR: ${error.message}`</p>;
+        console.error(error); // Improved error handling
       });
     return () => abortController.abort();
   }, [deckId]);
-
-  const initialCardState = {
-    front: "",
-    back: "",
-  };
-
-  const [card, setCard] = useState({ ...initialCardState });
 
   const changeHandler = ({ target }) => {
     setCard({ ...card, [target.name]: target.value });
@@ -34,23 +28,22 @@ function CardCreateNew() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-
     const abortController = new AbortController();
     createCard(deckId, card, abortController.signal)
       .then(() => {
         navigate(`/decks/${deckId}`);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error); // Improved error handling
       })
       .finally(() => {
-        setCard({ ...initialCardState });
+        setCard({ front: "", back: "" });
       });
   };
 
   const breadcrumbs = [
     { link: "/", title: "Home", active: false },
-    { link: `decks/${deck.id}`, title: deck.name, active: false },
+    { link: `/decks/${deck.id}`, title: deck.name, active: false },
     { link: "", title: "Add Card", active: true },
   ];
 
@@ -59,9 +52,9 @@ function CardCreateNew() {
       <Breadcrumb props={breadcrumbs} />
       <h2>{deck.name}: Add Card</h2>
       <CardForm
-        onSubmit={onSubmit}
         onChange={changeHandler}
-        cardData={card}
+        onSubmit={onSubmit}
+        card={card}
         deckId={deckId}
         add={true}
       />

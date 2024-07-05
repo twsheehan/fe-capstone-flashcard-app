@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 function CardForm({ onChange, onSubmit, card, deckId, add }) {
   const navigate = useNavigate();
 
+  if (!card) {
+    return <p>Loading...</p>; // or some loading indicator
+  }
+
   return (
     <form name="createCard" onSubmit={onSubmit}>
       <div>
@@ -15,7 +19,7 @@ function CardForm({ onChange, onSubmit, card, deckId, add }) {
           placeholder="Front side of card"
           required={true}
           onChange={onChange}
-          value={card.front}
+          value={card.front || ""}
         />
       </div>
       <div>
@@ -27,7 +31,7 @@ function CardForm({ onChange, onSubmit, card, deckId, add }) {
           placeholder="Back side of card"
           required={true}
           onChange={onChange}
-          value={card.back}
+          value={card.back || ""}
         />
       </div>
       <button
