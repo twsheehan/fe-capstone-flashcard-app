@@ -4,9 +4,10 @@ import DeckDeleteButton from "./DeckDeleteButton";
 
 function Deck({ deck }) {
   return (
-    <div className="card">
-      <div className="cardBody">
+    <div className="deck">
+      <div className="deckInfo">
         <h2>{deck.name}</h2>
+        <h3>{deck.cards.length} cards</h3>
         <p>{deck.description}</p>
         <NavLink to={`/decks/${deck.id}/edit`}>
           <button>Edit</button>
@@ -14,7 +15,6 @@ function Deck({ deck }) {
         <NavLink to={`/decks/${deck.id}/study`}>
           <button>Study</button>
         </NavLink>
-        <NavLink to={`/decks/${deck.id}/new`}>+ Add Cards</NavLink>
         <DeckDeleteButton deck={deck} />
       </div>
     </div>

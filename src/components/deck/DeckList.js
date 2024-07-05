@@ -9,17 +9,25 @@ function DeckList() {
 
   useEffect(() => {
     const abortController = new AbortController();
-    listDecks(abortController.signal).then(setDecks).catch(setError);
+    listDecks(abortController.signal)
+      .then((data) => {
+        console.log("Fetched decks:", data); // Add logging
+        setDecks(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching decks:", error); // Add logging
+        setError(error);
+      });
     return () => abortController.abort();
   }, []);
 
   if (error) {
-    return <p>`ERROR: ${error.message}`</p>;
+    return <p>ERROR: {error.message}</p>;
   }
 
   const deckList = decks.map((deck) => (
-    <div>
-      <Deck key={deck.id} deck={deck} />
+    <div key={deck.id}>
+      <Deck deck={deck} />
     </div>
   ));
   console.log(decks);
@@ -29,7 +37,7 @@ function DeckList() {
       <NavLink to="/decks/new">
         <button type="button">Create Deck</button>
       </NavLink>
-      {deckList}
+      <div>{deckList}</div>
     </div>
   );
 }
