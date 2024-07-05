@@ -12,16 +12,12 @@ function RootRoutes() {
   return (
     <Routes>
       <Route path="/" element={<DeckList />} />
-      <Route path="/decks" element={<DeckList />}>
-        <Route path="decks/:deckId" element={<DeckScreen />} />
-        <Route path="/decks/new" element={<DeckCreateNew />} />
-        <Route path="/decks/:deckId/cards/new" element={<CardCreateNew />} />
-        <Route
-          path="/decks/:deckId/cards/:cardId/edit"
-          element={<CardEdit />}
-        />
-        <Route path="/decks/:deckId/edit" element={<DeckEdit />} />
-      </Route>
+      <Route path="/decks" element={<DeckList />} />
+      <Route path="/decks/new" element={<DeckCreateNew />} />
+      <Route path="/decks/:deckId" element={<DeckScreen />} />
+      <Route path="/decks/:deckId/cards/new" element={<CardCreateNew />} />
+      <Route path="/decks/:deckId/cards/:cardId/edit" element={<CardEdit />} />
+      <Route path="/decks/:deckId/edit" element={<DeckEdit />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

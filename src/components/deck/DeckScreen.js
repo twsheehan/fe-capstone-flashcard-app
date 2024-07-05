@@ -27,16 +27,16 @@ function DeckScreen() {
     return <p>`ERROR: ${error.message}`</p>;
   }
 
-  const handleDelete = (cardId) => {
+  const deleteHandler = (cardId) => {
     const result = window.confirm(
       `Delete this card?\n\nYou will not be able to recover it.`
     );
     if (result) {
-      deleteCard(cardId).then(() =>
-        setCards((currentCards) => {
-          currentCards.filter((card) => card.id !== cardId);
-        })
-      );
+      deleteCard(cardId).then(() => {
+        setCards((currentCards) =>
+          currentCards.filter((card) => card.id !== cardId)
+        );
+      });
     }
   };
 
@@ -63,7 +63,7 @@ function DeckScreen() {
         <DeckDeleteButton deck={deck} />
       </div>
       <h3>Cards</h3>
-      {deck.cards && <CardList cards={cards} handleDelete={handleDelete} />}
+      {deck.cards && <CardList cards={cards} handleDelete={deleteHandler} />}
     </div>
   );
 }
