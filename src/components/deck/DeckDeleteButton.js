@@ -10,7 +10,7 @@ function DeckDeleteButton({ deck }) {
       `Delete this deck: ${deck.name}?\n\nYou will not be able to recover it.`
     );
     if (result) {
-      deleteDeck(deck.id).then(navigate(0));
+      deleteDeck(deck.id).then(navigate("/"));
     }
   };
 
