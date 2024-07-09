@@ -42,7 +42,16 @@ function CardForm({ onChange, onSubmit, card, deckId, add }) {
       >
         {add ? "Done" : "Cancel"}
       </button>
-      <button type="submit">{add ? "Save" : "Submit"}</button>
+      <button
+        type="submit"
+        onClick={() => {
+          if (add) {
+            window.location.reload();
+          }
+        }}
+      >
+        {add ? "Save" : "Submit"}
+      </button>
     </form>
   );
 }
