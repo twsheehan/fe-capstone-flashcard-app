@@ -4,6 +4,7 @@ import { deleteCard, readDeck } from "../../utils/api";
 import Breadcrumb from "../layout/Breadcrumb";
 import DeckDeleteButton from "./DeckDeleteButton";
 import CardList from "../card/CardList";
+import CardAddButton from "../card/CardAddButton";
 
 function DeckScreen() {
   const [deck, setDeck] = useState({});
@@ -24,10 +25,10 @@ function DeckScreen() {
   }, [deckId]);
 
   if (error) {
-    return <p>`ERROR: ${error.message}`</p>;
+    return <p>ERROR: {error.message}</p>;
   }
 
-  const deleteHandler = (cardId) => {
+  const deleteCardHandler = (cardId) => {
     const result = window.confirm(
       `Delete this card?\n\nYou will not be able to recover it.`
     );
@@ -57,13 +58,12 @@ function DeckScreen() {
         <NavLink to={`${pathname}/study`}>
           <button>Study</button>
         </NavLink>
-        <NavLink to={`${pathname}/cards/new`}>
-          <button>+ Add Cards</button>
-        </NavLink>
+        <CardAddButton pathname={pathname} />
         <DeckDeleteButton deck={deck} />
       </div>
-      <h3>Cards</h3>
-      {deck.cards && <CardList cards={cards} handleDelete={deleteHandler} />}
+      {deck.cards && (
+        <CardList cards={cards} handleDelete={deleteCardHandler} />
+      )}
     </div>
   );
 }
